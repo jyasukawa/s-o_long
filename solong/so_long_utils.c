@@ -14,10 +14,25 @@ void	ft_putstr_fd(char *s, int fd)
 	}
 }
 
+static void	ft_destroy_images(t_game *game)
+{
+	if (game->collectible != NULL)
+		mlx_destroy_image(game->mlx_ptr, game->collectible);
+	if (game->floor != NULL)
+		mlx_destroy_image(game->mlx_ptr, game->floor);
+	if (game->exit != NULL)
+		mlx_destroy_image(game->mlx_ptr, game->exit);
+	if (game->player != NULL)
+		mlx_destroy_image(game->mlx_ptr, game->player);
+	if (game->wall != NULL)
+		mlx_destroy_image(game->mlx_ptr, game->wall);
+}
+
 int	ft_free_and_exit(t_game *game)
 {
 	size_t	i;
 
+	ft_destroy_images(game);
 	if (game->win_ptr != NULL)
 		mlx_destroy_window(game->mlx_ptr, game->win_ptr);
 	free(game->mlx_ptr);
