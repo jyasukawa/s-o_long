@@ -52,7 +52,7 @@ static char **ft_clone_map(t_game *game)
 		ft_free_and_exit(game);
 	while (y < game->map_height)
 	{
-		clone[y] = (char *)malloc(sizeof(char) * ft_strlen(game->map[y]) + 1);
+		clone[y] = (char *)malloc(sizeof(char) * game->map_width + 2);
 		if (clone[y] == NULL)
 		{
 			ft_free_strs(clone);
